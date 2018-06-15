@@ -5,6 +5,9 @@
  */
 package appproyecto;
 
+import Login.Login;
+import Login.User;
+
 /**
  *
  * @author alejandro
@@ -12,10 +15,13 @@ package appproyecto;
 public class main {
 
     /**
-     * @param args the command line arguments
      */
+    public static MainV mv = new MainV();
+    public static User u = new User();
+    
     public static void main(String[] args) {
-        System.out.println("probando");
+        u.cargarArchivo();
+        mv.setVisible(true);
     }
     
 }
