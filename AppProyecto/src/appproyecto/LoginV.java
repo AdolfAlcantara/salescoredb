@@ -114,7 +114,10 @@ public class LoginV extends javax.swing.JPanel {
     }//GEN-LAST:event_tfUserActionPerformed
 
     private void bLoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLoginMousePressed
-        // TODO add your handling code here:
+       if (log.login(getUser(), getPassword()))
+       {
+           MainV.SETPANEL(new MainMenu());
+       }
     }//GEN-LAST:event_bLoginMousePressed
 
     private void bCrearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCrearMousePressed
