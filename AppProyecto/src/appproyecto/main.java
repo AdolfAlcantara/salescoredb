@@ -21,7 +21,6 @@ public class main {
     
     public static void main(String[] args) {
         log.cargarArchivo();
-        
         mv.setVisible(true);
     }
     
