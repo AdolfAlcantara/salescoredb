@@ -18,11 +18,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="bEdit" max="32767" attributes="0"/>
-                  <Component id="bRegistro" pref="173" max="32767" attributes="0"/>
-              </Group>
+              <Component id="bRegistro" min="-2" pref="173" max="-2" attributes="0"/>
               <EmptySpace pref="198" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="bRegreso" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -31,9 +33,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               <Component id="bRegistro" min="-2" pref="46" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="bEdit" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace pref="198" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="bRegreso" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -41,13 +43,19 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="bRegistro">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Registrar proveedores"/>
+        <Property name="text" type="java.lang.String" value="Registrar o actualizar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bRegistroActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="bEdit">
+    <Component class="javax.swing.JButton" name="bRegreso">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Editar proveedor"/>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bRegresoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
