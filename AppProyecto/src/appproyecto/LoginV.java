@@ -57,6 +57,11 @@ public class LoginV extends javax.swing.JPanel {
         });
 
         bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
 
         bCrear.setText("Crear");
         bCrear.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,6 +131,10 @@ public class LoginV extends javax.swing.JPanel {
         else
             System.out.println("me cago en esta mierda");
     }//GEN-LAST:event_bCrearMousePressed
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        
+    }//GEN-LAST:event_bSalirActionPerformed
 
     private String getUser()
     {

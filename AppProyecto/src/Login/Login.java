@@ -5,6 +5,7 @@
  */
 package Login;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -153,31 +154,36 @@ public class Login {
      */
     public boolean login(String s, String p)
     {
-        System.out.println("Pasa 1");
         if (validarUsuario(s,p))
         {
-            System.out.println("Pasa 2");
-            try {
+            SQLConnection();
+            return true;
+        }
+        System.out.println("Login failed");
+        return false;
+    }
+    
+    public Connection SQLConnection()
+    {
+        try {
                 Class.forName("com.ibm.db2.jcc.DB2Driver");
                 String url = "jdbc:db2://localhost:50000/Proyecto";
                 Connection connection = DriverManager.getConnection(url,"db2admin","davila");
                 if(connection.equals(null)) 
                 {
-                    System.out.println("connection was failed");	
+                    System.out.println("connection was failed");
+                    return null;
                 }
                 else
                 {
-                    System.out.println("connected successfully");	
+                    System.out.println("connected successfully");
+                    return connection;
                 }
             }
             catch(ClassNotFoundException | SQLException exception)
             {
                 System.out.println(exception.getMessage());
             }
-            return true;
-        }
-        System.out.println("Login failed");
-        return false;
+        return null;
     }
-
 }
