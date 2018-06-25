@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Login;
+package appproyecto;
+
+import Login.Login;
 
 /**
  *
@@ -14,8 +16,10 @@ public class LoginV extends javax.swing.JPanel {
     /**
      * Creates new form LoginV
      */
-    public LoginV() {
+    public static Login log;
+    public LoginV() {        
         initComponents();
+        log = new Login();
     }
 
     /**
@@ -29,24 +33,42 @@ public class LoginV extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        tfUser = new javax.swing.JTextField();
+        tfPassword = new javax.swing.JPasswordField();
         bLogin = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
+        bCrear = new javax.swing.JButton();
 
         jLabel1.setText("Usuario");
 
         jLabel2.setText("Password");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tfUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tfUserActionPerformed(evt);
             }
         });
 
         bLogin.setText("Login");
+        bLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                bLoginMousePressed(evt);
+            }
+        });
 
         bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
+
+        bCrear.setText("Crear");
+        bCrear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                bCrearMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -61,14 +83,16 @@ public class LoginV extends javax.swing.JPanel {
                             .addComponent(jLabel2))
                         .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
+                            .addComponent(tfUser)
+                            .addComponent(tfPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(bLogin)
-                        .addGap(99, 99, 99)
+                        .addGap(16, 16, 16)
+                        .addComponent(bCrear)
+                        .addGap(18, 18, 18)
                         .addComponent(bSalir)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,30 +100,59 @@ public class LoginV extends javax.swing.JPanel {
                 .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bLogin)
-                    .addComponent(bSalir))
+                    .addComponent(bSalir)
+                    .addComponent(bCrear))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tfUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tfUserActionPerformed
 
+    private void bLoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLoginMousePressed
+       if (log.login(getUser(), getPassword()))
+       {
+           MainV.SETPANEL(new MainMenu());
+       }
+    }//GEN-LAST:event_bLoginMousePressed
+
+    private void bCrearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCrearMousePressed
+        if (log.registrar(getUser(),getPassword()))
+            System.out.println("exitooo");
+        else
+            System.out.println("me cago en esta mierda");
+    }//GEN-LAST:event_bCrearMousePressed
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        
+    }//GEN-LAST:event_bSalirActionPerformed
+
+    private String getUser()
+    {
+        return tfUser.getText();
+    }
+    
+    private String getPassword()
+    {
+        return tfPassword.getText();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bCrear;
     private javax.swing.JButton bLogin;
     private javax.swing.JButton bSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField tfPassword;
+    private javax.swing.JTextField tfUser;
     // End of variables declaration//GEN-END:variables
 }

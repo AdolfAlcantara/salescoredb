@@ -5,10 +5,30 @@
  */
 package Login;
 
+import java.io.Serializable;
+
 /**
  *
  * @author alejandro
  */
-public class User {
+public class User implements Serializable {
+    protected String user;
+    protected String password;
+    protected transient boolean logged;
+    
+    public User() {
+        
+    }
+   
+    public User(String u, String p)
+    {
+        user = u;
+        password = p;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "user=" + user + ", password=" + password + '}';
+    }
     
 }
