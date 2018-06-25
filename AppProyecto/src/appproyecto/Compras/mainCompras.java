@@ -43,6 +43,11 @@ public class mainCompras extends javax.swing.JPanel {
         });
 
         bProductos.setText("Productos");
+        bProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                bProductosMousePressed(evt);
+            }
+        });
 
         bDocumentos.setText("Documentos");
 
@@ -89,8 +94,12 @@ public class mainCompras extends javax.swing.JPanel {
     }//GEN-LAST:event_bRegresoMousePressed
 
     private void bProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bProveedoresMousePressed
-        MainV.SETPANEL(new Proveedores());
+        MainV.SETPANEL(new ProveedoresV());
     }//GEN-LAST:event_bProveedoresMousePressed
+
+    private void bProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bProductosMousePressed
+        MainV.SETPANEL(new ProductosV());
+    }//GEN-LAST:event_bProductosMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
