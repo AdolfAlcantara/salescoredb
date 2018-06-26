@@ -5,13 +5,14 @@
         <group>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/MainMenu.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/mainCompras.java</file>
-            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/Proveedores.java</file>
+            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/GenerarOrdenCV.java</file>
+            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/OrdenComprasV.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/LoginV.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/main.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/Login/User.java</file>
-            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/RegistrarProveedor.java</file>
-            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/Compras/Proveedores.java</file>
-            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/Productos.java</file>
+            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/Compras/Productos.java</file>
+            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/Compras/OrdenCompras.java</file>
+            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/DocumentosV.java</file>
         </group>
     </open-files>
 </project-private>
