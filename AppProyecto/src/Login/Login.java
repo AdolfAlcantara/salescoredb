@@ -82,6 +82,8 @@ public class Login {
      */
     public boolean registrar(String u, String p)
     {
+        if (u.equals(""))
+            return false;
         if (!validarUsuario(u,p))
         {
             USUARIOS.add(new User(u,p));
