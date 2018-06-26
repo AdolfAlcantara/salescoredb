@@ -180,6 +180,7 @@ public class RegistrarProveedor extends javax.swing.JPanel {
         
         Proveedores pr = new Proveedores();
         pr.registrarProveedor(codigo, estado, nombre, ciudad, calle, avenida);
+        setBlank();
     }//GEN-LAST:event_bRegistrarActionPerformed
 
     private void bEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarActionPerformed
@@ -193,8 +194,19 @@ public class RegistrarProveedor extends javax.swing.JPanel {
         
         Proveedores pr = new Proveedores();
         pr.actualizarProveedor(codigo, estado, nombre, ciudad, calle, avenida, ctaCte);
+        setBlank();
     }//GEN-LAST:event_bEditarActionPerformed
 
+    private void setBlank()
+    {
+        tfCodigo.setText("");
+        tfEstado.setText("");
+        tfNombre.setText("");
+        tfCiudad.setText("");
+        tfCtaCte.setText("");
+        tfCalle.setText("");
+        tfAvenida.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bEditar;

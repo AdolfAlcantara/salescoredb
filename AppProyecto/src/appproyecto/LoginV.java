@@ -123,6 +123,7 @@ public class LoginV extends javax.swing.JPanel {
        {
            MainV.SETPANEL(new MainMenu());
        }
+       setBlank();
     }//GEN-LAST:event_bLoginMousePressed
 
     private void bCrearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCrearMousePressed
@@ -130,10 +131,12 @@ public class LoginV extends javax.swing.JPanel {
             System.out.println("exitooo");
         else
             System.out.println("me cago en esta mierda");
+        setBlank();
     }//GEN-LAST:event_bCrearMousePressed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-        
+        MainV mv = new MainV();
+        mv.dispose();
     }//GEN-LAST:event_bSalirActionPerformed
 
     private String getUser()
@@ -144,6 +147,12 @@ public class LoginV extends javax.swing.JPanel {
     private String getPassword()
     {
         return tfPassword.getText();
+    }
+    
+    private void setBlank()
+    {
+        tfUser.setText("");
+        tfPassword.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

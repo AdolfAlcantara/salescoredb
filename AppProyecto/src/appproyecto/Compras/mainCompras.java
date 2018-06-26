@@ -34,6 +34,7 @@ public class mainCompras extends javax.swing.JPanel {
         bProductos = new javax.swing.JButton();
         bDocumentos = new javax.swing.JButton();
         bRegreso = new javax.swing.JButton();
+        bOrdenC = new javax.swing.JButton();
 
         bProveedores.setText("Proveedores");
         bProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -50,6 +51,11 @@ public class mainCompras extends javax.swing.JPanel {
         });
 
         bDocumentos.setText("Documentos");
+        bDocumentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDocumentosActionPerformed(evt);
+            }
+        });
 
         bRegreso.setText("Regresar");
         bRegreso.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,21 +64,34 @@ public class mainCompras extends javax.swing.JPanel {
             }
         });
 
+        bOrdenC.setText("Orden de compras");
+        bOrdenC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                bOrdenCMousePressed(evt);
+            }
+        });
+        bOrdenC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bOrdenCActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bDocumentos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(186, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bRegreso)
                 .addGap(50, 50, 50))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bOrdenC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bDocumentos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,8 +101,10 @@ public class mainCompras extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(bProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(bOrdenC, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(bDocumentos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(bRegreso)
                 .addGap(31, 31, 31))
         );
@@ -101,9 +122,22 @@ public class mainCompras extends javax.swing.JPanel {
         MainV.SETPANEL(new ProductosV());
     }//GEN-LAST:event_bProductosMousePressed
 
+    private void bOrdenCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bOrdenCMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bOrdenCMousePressed
+
+    private void bOrdenCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenCActionPerformed
+        MainV.SETPANEL(new OrdenComprasV());
+    }//GEN-LAST:event_bOrdenCActionPerformed
+
+    private void bDocumentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDocumentosActionPerformed
+        MainV.SETPANEL(new DocumentosV());
+    }//GEN-LAST:event_bDocumentosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bDocumentos;
+    private javax.swing.JButton bOrdenC;
     private javax.swing.JButton bProductos;
     private javax.swing.JButton bProveedores;
     private javax.swing.JButton bRegreso;
