@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 package appproyecto.Ventas;
+import Ventas.Clientes;
+import appproyecto.MainMenu;
+import appproyecto.MainV;
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -11,6 +18,7 @@ package appproyecto.Ventas;
  */
 public class mainVentas extends javax.swing.JPanel {
 
+    Clientes cli = new Clientes();
     /**
      * Creates new form mainVentas
      */
@@ -27,19 +35,116 @@ public class mainVentas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        verClientesB = new javax.swing.JButton();
+        scrollPane = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+
+        jButton1.setText("Registrar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Hacer un pedido");
+
+        jButton3.setText("Regresar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        verClientesB.setText("Ver Clientes");
+        verClientesB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verClientesBActionPerformed(evt);
+            }
+        });
+
+        table.setAutoCreateColumnsFromModel(false);
+        table.setAutoCreateRowSorter(true);
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scrollPane.setViewportView(table);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(scrollPane, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(97, 97, 97)
+                        .addComponent(jButton2)
+                        .addGap(76, 76, 76)
+                        .addComponent(verClientesB)
+                        .addContainerGap(370, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(verClientesB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        MainV.SETPANEL(new RegistrarClientesV());
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        MainV.SETPANEL(new MainMenu());
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void verClientesBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verClientesBActionPerformed
+        JFrame frame = new JFrame();
+        String[][] values = cli.tableValues();
+        String[] names = cli.tableColumnNames();
+        table = new JTable(values,names);
+        scrollPane = new JScrollPane(table);
+        frame.add(scrollPane,BorderLayout.CENTER);
+        frame.setSize(900,720);
+        frame.setVisible(true);
+//        VerClientes vc = new VerClientes();
+    }//GEN-LAST:event_verClientesBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTable table;
+    private javax.swing.JButton verClientesB;
     // End of variables declaration//GEN-END:variables
 }

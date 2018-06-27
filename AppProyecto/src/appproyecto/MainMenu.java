@@ -6,6 +6,7 @@
 package appproyecto;
 
 import appproyecto.Compras.mainCompras;
+import appproyecto.Ventas.mainVentas;
 
 /**
  *
@@ -43,6 +44,11 @@ public class MainMenu extends javax.swing.JPanel {
         bAlmacen.setText("Almacen");
 
         bVentas.setText("Ventas");
+        bVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bVentasMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -72,6 +78,10 @@ public class MainMenu extends javax.swing.JPanel {
     private void bComprasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bComprasMousePressed
         MainV.SETPANEL(new mainCompras());
     }//GEN-LAST:event_bComprasMousePressed
+
+    private void bVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVentasMouseClicked
+        MainV.SETPANEL(new mainVentas());
+    }//GEN-LAST:event_bVentasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
