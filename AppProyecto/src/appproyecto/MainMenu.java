@@ -6,6 +6,7 @@
 package appproyecto;
 
 import appproyecto.Compras.mainCompras;
+import appproyecto.Ventas.mainVentas;
 
 /**
  *
@@ -50,6 +51,11 @@ public class MainMenu extends javax.swing.JPanel {
         bVentas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         bVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/ventas_icon.png"))); // NOI18N
         bVentas.setText("Ventas");
+        bVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bVentasMouseClicked(evt);
+            }
+        });
 
         bLogout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/logout_icon.png"))); // NOI18N
@@ -96,9 +102,14 @@ public class MainMenu extends javax.swing.JPanel {
         MainV.SETPANEL(new mainCompras());
     }//GEN-LAST:event_bComprasMousePressed
 
+    private void bVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVentasMouseClicked
+        MainV.SETPANEL(new mainVentas());
+    }//GEN-LAST:event_bVentasMouseClicked
+
     private void bLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLogoutActionPerformed
         MainV.SETPANEL(new LoginV());
     }//GEN-LAST:event_bLogoutActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
