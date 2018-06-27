@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -89,6 +90,7 @@ public class Login {
             USUARIOS.add(new User(u,p));
             System.out.println("Registro exitoso");
             escribirArchivo(USUARIOS, FILE_USUARIOS);
+            guardarEnBD(u, p);
             return true;
         }
         return false;
@@ -165,6 +167,33 @@ public class Login {
         return false;
     }
     
+    /**
+     * Esta funcion es para guardar los usuarios en la tabla USUARIOS de la base de datos
+     * @param u nombre de usuario
+     * @param p password
+     * El usuario de la computadora se guarda mediante una variable interna llamada username
+     */
+    protected void guardarEnBD(String u, String p)
+    {
+        String username = System.getProperty("user.name");
+        try{
+            Connection cn = SQLConnection();
+            CallableStatement cs = cn.prepareCall("{call SP_CREATE_USUARIOS(?, ?, ?)}");
+            cs.setString(1, u);
+            cs.setString(2, p);
+            cs.setString(3, username);
+            cs.execute();
+            cs.close();
+            System.out.println("Se guardo el usuario en la base de datos");
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /**
+     * Esta funcion genera una Connection que se utiliza al llamar todos los procedimientos en la aplicacion
+     * @return Connection
+     */
     public Connection SQLConnection()
     {
         try {

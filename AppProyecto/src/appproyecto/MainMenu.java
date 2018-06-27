@@ -33,7 +33,10 @@ public class MainMenu extends javax.swing.JPanel {
         bCompras = new javax.swing.JButton();
         bAlmacen = new javax.swing.JButton();
         bVentas = new javax.swing.JButton();
+        bLogout = new javax.swing.JButton();
 
+        bCompras.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/compras_icon.png"))); // NOI18N
         bCompras.setText("Compras");
         bCompras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -41,12 +44,25 @@ public class MainMenu extends javax.swing.JPanel {
             }
         });
 
+        bAlmacen.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/almacen_icon.png"))); // NOI18N
         bAlmacen.setText("Almacen");
 
+        bVentas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/ventas_icon.png"))); // NOI18N
         bVentas.setText("Ventas");
         bVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bVentasMouseClicked(evt);
+            }
+        });
+
+        bLogout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/logout_icon.png"))); // NOI18N
+        bLogout.setText("Cerrar Sesion");
+        bLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLogoutActionPerformed(evt);
             }
         });
 
@@ -55,23 +71,30 @@ public class MainMenu extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(241, 241, 241)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(bCompras)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(bLogout))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(bAlmacen)
+                        .addGap(18, 18, 18)
+                        .addComponent(bVentas)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(bCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(bAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(bVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGap(132, 132, 132)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addComponent(bLogout)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -83,10 +106,16 @@ public class MainMenu extends javax.swing.JPanel {
         MainV.SETPANEL(new mainVentas());
     }//GEN-LAST:event_bVentasMouseClicked
 
+    private void bLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLogoutActionPerformed
+        MainV.SETPANEL(new LoginV());
+    }//GEN-LAST:event_bLogoutActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAlmacen;
     private javax.swing.JButton bCompras;
+    private javax.swing.JButton bLogout;
     private javax.swing.JButton bVentas;
     // End of variables declaration//GEN-END:variables
 }
