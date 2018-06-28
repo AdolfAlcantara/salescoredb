@@ -6,6 +6,7 @@
 package Compras;
 
 import Login.Login;
+import Login.SQLConnections;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
@@ -33,9 +34,9 @@ public class OrdenCompras {
      */
     public void createOrdenC(String noOrden, String estado, String lugar, Timestamp fecha, String condicion, double total, String codProv, String noDetalle)
     {
-        Login log = new Login();
+        SQLConnections cons = new SQLConnections();
         try{
-            Connection cn = log.SQLConnection();
+            Connection cn = cons.SQLConnection();
             CallableStatement cs = cn.prepareCall("{call SP_CREATE_ORDEN_COMPRAS(?, ?, ?, ?, ?, ?, ?, ?)}");
             cs.setString(1, noOrden);
             cs.setString(2, estado);

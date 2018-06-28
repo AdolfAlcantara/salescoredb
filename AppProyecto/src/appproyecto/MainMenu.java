@@ -5,6 +5,7 @@
  */
 package appproyecto;
 
+import Login.Login;
 import appproyecto.Compras.mainCompras;
 
 /**
@@ -33,6 +34,7 @@ public class MainMenu extends javax.swing.JPanel {
         bAlmacen = new javax.swing.JButton();
         bVentas = new javax.swing.JButton();
         bLogout = new javax.swing.JButton();
+        lWelcome = new javax.swing.JLabel();
 
         bCompras.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         bCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/compras_icon.png"))); // NOI18N
@@ -60,28 +62,38 @@ public class MainMenu extends javax.swing.JPanel {
             }
         });
 
+        lWelcome.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lWelcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(bCompras)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(bLogout))
+                        .addGap(27, 27, 27)
+                        .addComponent(bCompras)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(bLogout))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(bAlmacen)
+                                .addGap(18, 18, 18)
+                                .addComponent(bVentas))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(bAlmacen)
-                        .addGap(18, 18, 18)
-                        .addComponent(bVentas)))
+                        .addGap(257, 257, 257)
+                        .addComponent(lWelcome)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
+                .addGap(48, 48, 48)
+                .addComponent(lWelcome)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -90,6 +102,8 @@ public class MainMenu extends javax.swing.JPanel {
                 .addComponent(bLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lWelcome.setText("Bienvenido "+Login.USER_LOGGED.user);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bComprasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bComprasMousePressed
@@ -106,5 +120,6 @@ public class MainMenu extends javax.swing.JPanel {
     private javax.swing.JButton bCompras;
     private javax.swing.JButton bLogout;
     private javax.swing.JButton bVentas;
+    private javax.swing.JLabel lWelcome;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,14 +13,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
  * Esta clase es la base para el login visual
  * @author alejandro
@@ -31,18 +26,18 @@ public class Login {
      * Este objeto es solo para llamar metodos 
      * de manera directa. Se inicializa en el constructor.
      */
-    protected User user;
+    public static User USER_LOGGED = new User();
     protected static File FILE_USUARIOS;
     protected static ArrayList<User> USUARIOS=new ArrayList<>(); 
     
     public Login()
     {
-        try {
+        /*try {
             FILE_USUARIOS = new File("usuarios.txt");
             FILE_USUARIOS.createNewFile();
         } catch (NullPointerException | IOException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex); 
-        }
+        }*/
     }
     
         
@@ -67,12 +62,8 @@ public class Login {
      */
     public boolean validarUsuario(String u, String p)
     {
-        if (USUARIOS!=null)
-        {
-            return USUARIOS.stream().anyMatch((User us) -> (us.user.equalsIgnoreCase(u) 
-                    && us.password.equalsIgnoreCase(p)));
-        }
-        return false;
+        SQLConnections cn = new SQLConnections();
+        return cn.cargarDeBD(u,p);
     }
     
     /**
@@ -83,14 +74,15 @@ public class Login {
      */
     public boolean registrar(String u, String p)
     {
+        SQLConnections cn = new SQLConnections();
         if (u.equals(""))
             return false;
         if (!validarUsuario(u,p))
         {
-            USUARIOS.add(new User(u,p));
+            //USUARIOS.add(new User(u,p));
             System.out.println("Registro exitoso");
-            escribirArchivo(USUARIOS, FILE_USUARIOS);
-            guardarEnBD(u, p);
+            //escribirArchivo(USUARIOS, FILE_USUARIOS);
+            cn.guardarEnBD(u, p);
             return true;
         }
         return false;
@@ -158,63 +150,19 @@ public class Login {
      */
     public boolean login(String s, String p)
     {
-        if (validarUsuario(s,p))
+        SQLConnections cn = new SQLConnections();
+        if (validarUsuario(s,p)){
+            USER_LOGGED.user = s;
+            USER_LOGGED.password = p;
+            return true;
+        }
+        /*if (validarUsuario(s,p))
         {
             SQLConnection();
             return true;
-        }
+        }*/
         System.out.println("Login failed");
         return false;
     }
     
-    /**
-     * Esta funcion es para guardar los usuarios en la tabla USUARIOS de la base de datos
-     * @param u nombre de usuario
-     * @param p password
-     * El usuario de la computadora se guarda mediante una variable interna llamada username
-     */
-    protected void guardarEnBD(String u, String p)
-    {
-        String username = System.getProperty("user.name");
-        try{
-            Connection cn = SQLConnection();
-            CallableStatement cs = cn.prepareCall("{call SP_CREATE_USUARIOS(?, ?, ?)}");
-            cs.setString(1, u);
-            cs.setString(2, p);
-            cs.setString(3, username);
-            cs.execute();
-            cs.close();
-            System.out.println("Se guardo el usuario en la base de datos");
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    /**
-     * Esta funcion genera una Connection que se utiliza al llamar todos los procedimientos en la aplicacion
-     * @return Connection
-     */
-    public Connection SQLConnection()
-    {
-        try {
-                Class.forName("com.ibm.db2.jcc.DB2Driver");
-                String url = "jdbc:db2://localhost:50000/Proyecto";
-                Connection connection = DriverManager.getConnection(url,"db2admin","davila");
-                if(connection.equals(null)) 
-                {
-                    System.out.println("connection was failed");
-                    return null;
-                }
-                else
-                {
-                    System.out.println("connected successfully");
-                    return connection;
-                }
-            }
-            catch(ClassNotFoundException | SQLException exception)
-            {
-                System.out.println(exception.getMessage());
-            }
-        return null;
-    }
 }

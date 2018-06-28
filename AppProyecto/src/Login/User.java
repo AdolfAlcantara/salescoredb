@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author alejandro
  */
 public class User implements Serializable {
-    protected String user;
+    public String user;
     protected String password;
     protected transient boolean logged;
     

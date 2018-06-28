@@ -3,14 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/MainMenu.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/mainCompras.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/GenerarOrdenCV.java</file>
-            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/OrdenComprasV.java</file>
+            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/MainMenu.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/LoginV.java</file>
+            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/MainV.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/main.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/Login/User.java</file>
-            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/Compras/Productos.java</file>
+            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/Compras/Documentos.java</file>
+            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/DocInexistenteV.java</file>
+            <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/DocExistenteV.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/Compras/OrdenCompras.java</file>
             <file>file:/C:/Users/alejandro/Documents/salescoredb/AppProyecto/src/appproyecto/Compras/DocumentosV.java</file>
         </group>

@@ -6,6 +6,7 @@
 package Compras;
 
 import Login.Login;
+import Login.SQLConnections;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -31,9 +32,9 @@ public class Productos {
      */
     public void createProductoL(String cod, String line, String tipo, String activo, double medida, int centro, String destino, String descripcion)
     {
-       Login log = new Login();
+       SQLConnections cons = new SQLConnections();
        try{
-           Connection con = log.SQLConnection();
+           Connection con = cons.SQLConnection();
            CallableStatement cs = con.prepareCall("{call SP_CREATE_PRODUCTOS(?, ?, ?, ?, ?, ?, ?, ?)}");
            cs.setString(1, cod);
            cs.setString(2, line);
@@ -60,10 +61,10 @@ public class Productos {
      */
     public void createProductoA(String cod, int control, int stockMin, int stockMax)
     {
-        Login log = new Login();
+        SQLConnections cons = new SQLConnections();
         try{
             createProductoL(cod,"","","",0,0,"","");
-            Connection con = log.SQLConnection();
+            Connection con = cons.SQLConnection();
             CallableStatement cs = con.prepareCall("{call SP_CREATE_PRODUCTOS_A(?, ?, ?, ?)}");
             cs.setString(1, cod);
             cs.setInt(2, control);
