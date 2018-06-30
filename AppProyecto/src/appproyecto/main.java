@@ -17,10 +17,10 @@ public class main {
     /**
      */
     public static MainV mv = new MainV();
-    public static Login log = new Login();
+    //public static Login log = new Login();
     
     public static void main(String[] args) {
-        log.cargarArchivo();
+        //log.cargarArchivo();
         mv.setVisible(true);
     }
     

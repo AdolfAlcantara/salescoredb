@@ -6,24 +6,17 @@
 package Login;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  * Esta clase es la base para el login visual
@@ -35,34 +28,34 @@ public class Login {
      * Este objeto es solo para llamar metodos 
      * de manera directa. Se inicializa en el constructor.
      */
-    protected User user;
-    protected static File FILE_USUARIOS;
-    protected static ArrayList<User> USUARIOS=new ArrayList<>(); 
+    public static User USER_LOGGED = new User();
+    //protected static File FILE_USUARIOS;
+    //protected static ArrayList<User> USUARIOS=new ArrayList<>(); 
     
     public Login()
     {
-        try {
+        /*try {
             FILE_USUARIOS = new File("usuarios.txt");
             FILE_USUARIOS.createNewFile();
         } catch (NullPointerException | IOException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex); 
-        }
+        }*/
     }
     
-        
+/*        
     /**
      * Esta funcion es para comprobar si el usuario ya existe al momento
      * de crearlo
      * @param p es el nombre del usuario
      * @return true si encuentra un usuario con el mismo nombre
-     */
+     
     public boolean usuarioFound(String p){
         if(USUARIOS!= null){
             return USUARIOS.stream().anyMatch((u) -> (u.user.equalsIgnoreCase(p)));
         }
         return false;
     }
-    
+    */
     /**
      *
      * @param u nombre de usuario
@@ -71,12 +64,8 @@ public class Login {
      */
     public boolean validarUsuario(String u, String p)
     {
-        if (USUARIOS!=null)
-        {
-            return USUARIOS.stream().anyMatch((User us) -> (us.user.equalsIgnoreCase(u) 
-                    && us.password.equalsIgnoreCase(p)));
-        }
-        return false;
+        SQLConnections cn = new SQLConnections();
+        return cn.cargarDeBD(u,p);
     }
     
     /**
@@ -87,14 +76,15 @@ public class Login {
      */
     public boolean registrar(String u, String p)
     {
+        SQLConnections cn = new SQLConnections();
         if (u.equals(""))
             return false;
         if (!validarUsuario(u,p))
         {
-            USUARIOS.add(new User(u,p));
+            //USUARIOS.add(new User(u,p));
             System.out.println("Registro exitoso");
-            escribirArchivo(USUARIOS, FILE_USUARIOS);
-            guardarEnBD(u, p);
+            //escribirArchivo(USUARIOS, FILE_USUARIOS);
+            cn.guardarEnBD(u, p);
             return true;
         }
         return false;
@@ -104,7 +94,7 @@ public class Login {
      * Esta funcion carga los usuarios de un archivo de objetos
      * @return true si se cargo info del archivo
      */
-    public boolean cargarArchivo()
+ /*   public boolean cargarArchivo()
     {
         if (FILE_USUARIOS.exists())
         {
@@ -122,13 +112,13 @@ public class Login {
         }
         return false;
     }
-    
+/*    
     /**
      *
      * @param list recibe de parametro el ArrayList de usuarios
      * @param f es el archivo donde se guarda todo
      * @return true si se guardo
-     */
+     
     public boolean escribirArchivo(ArrayList list, File f)
     {
         if (!list.isEmpty())
@@ -153,7 +143,7 @@ public class Login {
         for (User u: USUARIOS)
            System.out.println(u.toString());
     }
-    
+ */   
     /**
      *
      * @param s user
@@ -162,11 +152,17 @@ public class Login {
      */
     public boolean login(String s, String p)
     {
-        if (validarUsuario(s,p))
+        SQLConnections cn = new SQLConnections();
+        if (validarUsuario(s,p)){
+            USER_LOGGED.user = s;
+            USER_LOGGED.password = p;
+            return true;
+        }
+        /*if (validarUsuario(s,p))
         {
             SQLConnection();
             return true;
-        }
+        }*/
         System.out.println("Login failed");
         return false;
     }

@@ -6,8 +6,6 @@
 package Ventas;
 
 import Compras.Proveedores;
-import Login.Login;
-import appproyecto.MainV;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,13 +14,14 @@ import java.sql.ResultSetMetaData;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import Login.SQLConnections;
 
 /**
  *
  * @author FuryCoder
  */
 public class Clientes {
-    Login log = new Login();
+    SQLConnections log = new SQLConnections();
     Connection con = log.SQLConnection();
 
     public void regtClientes(String name, String city, int ave, int street){

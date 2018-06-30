@@ -49,7 +49,8 @@ public class ProductoLV extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         tfCrear = new javax.swing.JButton();
-        tfActualizar = new javax.swing.JButton();
+        bActualizar = new javax.swing.JButton();
+        bBorrar = new javax.swing.JButton();
 
         bRegresar.setText("Regresar");
         bRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +90,19 @@ public class ProductoLV extends javax.swing.JPanel {
             }
         });
 
-        tfActualizar.setText("Actualizar");
+        bActualizar.setText("Actualizar");
+        bActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bActualizarActionPerformed(evt);
+            }
+        });
+
+        bBorrar.setText("Borrar");
+        bBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -106,27 +119,31 @@ public class ProductoLV extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tfCrear)
-                        .addGap(41, 41, 41)
-                        .addComponent(tfActualizar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                    .addComponent(tfCrear))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bRegresar)
-                        .addGap(54, 54, 54))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tfDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tfDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                                .addComponent(tfCentro, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfMedida, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfActivo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfTipo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfLinea, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(58, 58, 58))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tfDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(tfDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                                        .addComponent(tfCentro, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfMedida, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfActivo, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfTipo, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfLinea, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(bBorrar))
+                                .addGap(58, 58, 58))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(bRegresar)
+                                .addGap(54, 54, 54))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(bActualizar)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,16 +186,17 @@ public class ProductoLV extends javax.swing.JPanel {
                         .addComponent(bRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfCrear)
-                            .addComponent(tfActualizar))
-                        .addContainerGap(37, Short.MAX_VALUE))))
+                            .addComponent(bActualizar)
+                            .addComponent(bBorrar))
+                        .addContainerGap(70, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegresarActionPerformed
-        MainV.SETPANEL(new ProductosV());
+        MainV.SETPANEL(new mainCompras());
     }//GEN-LAST:event_bRegresarActionPerformed
 
     private void tfCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCrearActionPerformed
@@ -190,11 +208,35 @@ public class ProductoLV extends javax.swing.JPanel {
         int centro = Integer.parseInt(tfCentro.getText());
         String destino = tfDestino.getText();
         String descripcion = tfDescripcion.getText();
+
         
         Productos pr = new Productos();
         pr.createProductoL(codigo, linea, tipo, activo, medida, centro, destino, descripcion);
         setBlank();
     }//GEN-LAST:event_tfCrearActionPerformed
+
+    private void bActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarActionPerformed
+        String codigo = tfCodigo.getText();
+        String linea = tfLinea.getText();
+        String tipo = tfTipo.getText();
+        String activo = tfActivo.getText();
+        double medida = Double.parseDouble(tfMedida.getText());
+        int centro = Integer.parseInt(tfCentro.getText());
+        String destino = tfDestino.getText();
+        String descripcion = tfDescripcion.getText();
+        
+        Productos pr = new Productos();
+        pr.updateProductoL(codigo, linea, tipo, activo, medida, centro, destino, descripcion);
+        setBlank();
+    }//GEN-LAST:event_bActualizarActionPerformed
+
+    private void bBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBorrarActionPerformed
+        String codigo = tfCodigo.getText();
+        
+        Productos pr = new Productos();
+        pr.deleteProductoL(codigo);
+        setBlank();
+    }//GEN-LAST:event_bBorrarActionPerformed
 
     private void setBlank()
     {
@@ -209,6 +251,8 @@ public class ProductoLV extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bActualizar;
+    private javax.swing.JButton bBorrar;
     private javax.swing.JButton bRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -219,7 +263,6 @@ public class ProductoLV extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField tfActivo;
-    private javax.swing.JButton tfActualizar;
     private javax.swing.JTextField tfCentro;
     private javax.swing.JTextField tfCodigo;
     private javax.swing.JButton tfCrear;

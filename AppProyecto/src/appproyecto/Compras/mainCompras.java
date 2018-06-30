@@ -5,8 +5,16 @@
  */
 package appproyecto.Compras;
 
+import Login.Login;
+import Login.SQLConnections;
 import appproyecto.MainMenu;
 import appproyecto.MainV;
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -35,6 +43,10 @@ public class mainCompras extends javax.swing.JPanel {
         bDocumentos = new javax.swing.JButton();
         bRegreso = new javax.swing.JButton();
         bOrdenC = new javax.swing.JButton();
+        bRegCompras = new javax.swing.JButton();
+        bCtaCte = new javax.swing.JButton();
+        bEstadisticas = new javax.swing.JButton();
+        panelTableContainer = new javax.swing.JPanel();
 
         bProveedores.setText("Proveedores");
         bProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,37 +88,75 @@ public class mainCompras extends javax.swing.JPanel {
             }
         });
 
+        bRegCompras.setText("Registro de compras");
+        bRegCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegComprasActionPerformed(evt);
+            }
+        });
+
+        bCtaCte.setText("Ver Cuenta Corriente");
+        bCtaCte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCtaCteActionPerformed(evt);
+            }
+        });
+
+        bEstadisticas.setText("Estadisticas");
+        bEstadisticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEstadisticasActionPerformed(evt);
+            }
+        });
+
+        panelTableContainer.setLayout(new java.awt.CardLayout());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bRegreso)
-                .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
+                .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bOrdenC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bDocumentos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(186, Short.MAX_VALUE))
+                    .addComponent(bCtaCte, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(bEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bRegreso)
+                            .addGap(25, 25, 25))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(bProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(39, 39, 39)
+                            .addComponent(bProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(35, 35, 35)
+                            .addComponent(bOrdenC, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(33, 33, 33)
+                            .addComponent(bDocumentos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(bRegCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(panelTableContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addComponent(bProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bOrdenC, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bDocumentos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bRegCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(bProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(bOrdenC, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(bDocumentos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(bRegreso)
-                .addGap(31, 31, 31))
+                .addComponent(bCtaCte, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(panelTableContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bRegreso)
+                    .addComponent(bEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,11 +165,11 @@ public class mainCompras extends javax.swing.JPanel {
     }//GEN-LAST:event_bRegresoMousePressed
 
     private void bProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bProveedoresMousePressed
-        MainV.SETPANEL(new ProveedoresV());
+        MainV.SETPANEL(new RegistrarProveedor());
     }//GEN-LAST:event_bProveedoresMousePressed
 
     private void bProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bProductosMousePressed
-        MainV.SETPANEL(new ProductosV());
+        MainV.SETPANEL(new ProductoLV());
     }//GEN-LAST:event_bProductosMousePressed
 
     private void bOrdenCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bOrdenCMousePressed
@@ -134,12 +184,44 @@ public class mainCompras extends javax.swing.JPanel {
         MainV.SETPANEL(new DocumentosV());
     }//GEN-LAST:event_bDocumentosActionPerformed
 
+    private void bRegComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegComprasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bRegComprasActionPerformed
+
+    private void bCtaCteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCtaCteActionPerformed
+        Login logi = new Login();
+        SQLConnections log = new SQLConnections();
+        Connection con = log.SQLConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        JTable table;
+        try{
+        ps = con.prepareStatement("SELECT * FROM VER_CC_PROVEEDOR");
+        rs = ps.executeQuery();
+        table = new JTable(logi.buildTableModel(rs));
+        JScrollPane scrollPane = new JScrollPane(table);
+        panelTableContainer.add(scrollPane,BorderLayout.CENTER);
+        panelTableContainer.repaint();
+        panelTableContainer.revalidate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_bCtaCteActionPerformed
+
+    private void bEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEstadisticasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bEstadisticasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bCtaCte;
     private javax.swing.JButton bDocumentos;
+    private javax.swing.JButton bEstadisticas;
     private javax.swing.JButton bOrdenC;
     private javax.swing.JButton bProductos;
     private javax.swing.JButton bProveedores;
+    private javax.swing.JButton bRegCompras;
     private javax.swing.JButton bRegreso;
+    private javax.swing.JPanel panelTableContainer;
     // End of variables declaration//GEN-END:variables
 }
