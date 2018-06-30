@@ -4,6 +4,18 @@
  * and open the template in the editor.
  */
 package appproyecto.Ventas;
+import Login.Login;
+import Ventas.Clientes;
+import appproyecto.MainMenu;
+import appproyecto.MainV;
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -11,6 +23,7 @@ package appproyecto.Ventas;
  */
 public class mainVentas extends javax.swing.JPanel {
 
+    Clientes cli = new Clientes();
     /**
      * Creates new form mainVentas
      */
@@ -27,19 +40,122 @@ public class mainVentas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        verClientesB = new javax.swing.JButton();
+        panelTableCotainer = new javax.swing.JPanel();
+
+        jButton1.setText("Registrar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Hacer un pedido");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Regresar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        verClientesB.setText("Ver Clientes");
+        verClientesB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verClientesBActionPerformed(evt);
+            }
+        });
+
+        panelTableCotainer.setLayout(new java.awt.CardLayout());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(verClientesB)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelTableCotainer, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 47, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(84, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(verClientesB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(panelTableCotainer, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        MainV.SETPANEL(new RegistrarClientesV());
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        MainV.SETPANEL(new MainMenu());
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void verClientesBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verClientesBActionPerformed
+//        JFrame frame = new JFrame();
+//        String[][] values = cli.tableValues();
+//        String[] names = cli.tableColumnNames();
+        Login log = new Login();
+        Connection con = log.SQLConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        JTable table;
+        try{
+        ps = con.prepareStatement("SELECT * FROM VER_CC_CLIENTE");
+        rs = ps.executeQuery();
+        table = new JTable(log.buildTableModel(rs));
+        JScrollPane scrollPane = new JScrollPane(table);
+        panelTableCotainer.add(scrollPane,BorderLayout.CENTER);
+        panelTableCotainer.repaint();
+        panelTableCotainer.revalidate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+//        this.add(scrollPane,BorderLayout.CENTER);
+//        this.setSize(900,720);
+//        this.setVisible(true);
+//        VerClientes vc = new VerClientes();
+    }//GEN-LAST:event_verClientesBActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+            MainV.SETPANEL(new OrdenPedidoV());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JPanel panelTableCotainer;
+    private javax.swing.JButton verClientesB;
     // End of variables declaration//GEN-END:variables
 }

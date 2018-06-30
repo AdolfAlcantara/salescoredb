@@ -19,13 +19,14 @@ public class MainV extends javax.swing.JFrame {
      * Creates new form MainV
      */
     public static Login log = new Login();
+    public static MainV mv = new MainV();
 
     public MainV() {
         initComponents();
-        
         SETPANEL(new LoginV());
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(true);
+        setTitle("Sales Core");
     }
     
     public static final void SETPANEL(JPanel panel){
