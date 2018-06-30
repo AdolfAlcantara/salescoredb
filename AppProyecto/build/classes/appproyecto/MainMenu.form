@@ -16,7 +16,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Group type="102" attributes="0">
+=======
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <Component id="bCompras" min="-2" max="-2" attributes="0"/>
+>>>>>>> 3036d28011c3ff117d0aa91478c07a272aa56b5d
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -39,24 +45,28 @@
                       <Component id="lWelcome" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Component id="lWelcome" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+=======
+              <EmptySpace pref="132" max="32767" attributes="0"/>
+>>>>>>> 3036d28011c3ff117d0aa91478c07a272aa56b5d
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="bCompras" alignment="3" min="-2" pref="154" max="-2" attributes="0"/>
                   <Component id="bAlmacen" alignment="3" min="-2" pref="154" max="-2" attributes="0"/>
                   <Component id="bVentas" alignment="3" min="-2" pref="154" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
               <Component id="bLogout" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

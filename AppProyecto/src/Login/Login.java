@@ -4,6 +4,20 @@
  * and open the template in the editor.
  */
 package Login;
+
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  * Esta clase es la base para el login visual
  * @author alejandro
@@ -153,4 +167,80 @@ public class Login {
         return false;
     }
     
+    /**
+     * Esta funcion es para guardar los usuarios en la tabla USUARIOS de la base de datos
+     * @param u nombre de usuario
+     * @param p password
+     * El usuario de la computadora se guarda mediante una variable interna llamada username
+     */
+    protected void guardarEnBD(String u, String p)
+    {
+        String username = System.getProperty("user.name");
+        try{
+            Connection cn = SQLConnection();
+            CallableStatement cs = cn.prepareCall("{call SP_CREATE_USUARIOS(?, ?, ?)}");
+            cs.setString(1, u);
+            cs.setString(2, p);
+            cs.setString(3, username);
+            cs.execute();
+            cs.close();
+            System.out.println("Se guardo el usuario en la base de datos");
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /**
+     * Esta funcion genera una Connection que se utiliza al llamar todos los procedimientos en la aplicacion
+     * @return Connection
+     */
+    public Connection SQLConnection()
+    {
+        try {
+                Class.forName("com.ibm.db2.jcc.DB2Driver");
+                String url = "jdbc:db2://192.168.56.101:50000/proyecto";
+                Connection connection = DriverManager.getConnection(url,"db2admin","hitler45");
+                if(connection.equals(null)) 
+                {
+                    System.out.println("connection was failed");
+                    return null;
+                }
+                else
+                {
+                    System.out.println("connected successfully");
+                    return connection;
+                }
+            }
+            catch(ClassNotFoundException | SQLException exception)
+            {
+                System.out.println(exception.getMessage());
+            }
+        return null;
+    }
+    
+    public DefaultTableModel buildTableModel(ResultSet rs)
+            throws SQLException {
+
+        ResultSetMetaData metaData = rs.getMetaData();
+
+        // names of columns
+        Vector<String> columnNames = new Vector<String>();
+        int columnCount = metaData.getColumnCount();
+        for (int column = 1; column <= columnCount; column++) {
+            columnNames.add(metaData.getColumnName(column));
+        }
+
+        // data of the table
+        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+        while (rs.next()) {
+            Vector<Object> vector = new Vector<Object>();
+            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+                vector.add(rs.getObject(columnIndex));
+            }
+            data.add(vector);
+        }
+
+        return new DefaultTableModel(data, columnNames);
+
+    }
 }

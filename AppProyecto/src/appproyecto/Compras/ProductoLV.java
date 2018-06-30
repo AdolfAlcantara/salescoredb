@@ -51,12 +51,6 @@ public class ProductoLV extends javax.swing.JPanel {
         tfCrear = new javax.swing.JButton();
         bActualizar = new javax.swing.JButton();
         bBorrar = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        tfControl = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        tfStockMin = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        tfStockMax = new javax.swing.JTextField();
 
         bRegresar.setText("Regresar");
         bRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,15 +104,6 @@ public class ProductoLV extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel9.setText("Control");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel10.setText("Stock Min.");
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel11.setText("Stock Max.");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,50 +111,38 @@ public class ProductoLV extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(tfCrear))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(tfCrear))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(tfDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(tfDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                                                .addComponent(tfCentro, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(tfMedida, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(tfActivo, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(tfTipo, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(tfLinea, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addComponent(tfControl, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tfStockMin, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tfStockMax, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(58, 58, 58))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(bBorrar)
-                                            .addComponent(bRegresar))
-                                        .addGap(54, 54, 54))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addComponent(bActualizar)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tfDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(tfDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                                        .addComponent(tfCentro, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfMedida, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfActivo, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfTipo, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfLinea, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(bBorrar))
+                                .addGap(58, 58, 58))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(bRegresar)
+                                .addGap(54, 54, 54))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9))
+                        .addGap(77, 77, 77)
+                        .addComponent(bActualizar)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -210,28 +183,15 @@ public class ProductoLV extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bBorrar)
-                        .addGap(18, 18, 18)
                         .addComponent(bRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(tfControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(tfStockMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(tfStockMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfCrear)
-                            .addComponent(bActualizar))
-                        .addContainerGap(57, Short.MAX_VALUE))))
+                            .addComponent(bActualizar)
+                            .addComponent(bBorrar))
+                        .addContainerGap(70, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -248,12 +208,10 @@ public class ProductoLV extends javax.swing.JPanel {
         int centro = Integer.parseInt(tfCentro.getText());
         String destino = tfDestino.getText();
         String descripcion = tfDescripcion.getText();
-        int control = Integer.parseInt(tfControl.getText());
-        int stockMin = Integer.parseInt(tfStockMin.getText());
-        int stockMax = Integer.parseInt(tfStockMax.getText());
+
         
         Productos pr = new Productos();
-        pr.createProductoL(codigo, linea, tipo, activo, medida, centro, destino, descripcion, control, stockMin, stockMax);
+        pr.createProductoL(codigo, linea, tipo, activo, medida, centro, destino, descripcion);
         setBlank();
     }//GEN-LAST:event_tfCrearActionPerformed
 
@@ -266,12 +224,9 @@ public class ProductoLV extends javax.swing.JPanel {
         int centro = Integer.parseInt(tfCentro.getText());
         String destino = tfDestino.getText();
         String descripcion = tfDescripcion.getText();
-        int control = Integer.parseInt(tfControl.getText());
-        int stockMin = Integer.parseInt(tfStockMin.getText());
-        int stockMax = Integer.parseInt(tfStockMax.getText());
         
         Productos pr = new Productos();
-        pr.updateProductoL(codigo, linea, tipo, activo, medida, centro, destino, descripcion,control, stockMin, stockMax);
+        pr.updateProductoL(codigo, linea, tipo, activo, medida, centro, destino, descripcion);
         setBlank();
     }//GEN-LAST:event_bActualizarActionPerformed
 
@@ -300,8 +255,6 @@ public class ProductoLV extends javax.swing.JPanel {
     private javax.swing.JButton bBorrar;
     private javax.swing.JButton bRegresar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -309,18 +262,14 @@ public class ProductoLV extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField tfActivo;
     private javax.swing.JTextField tfCentro;
     private javax.swing.JTextField tfCodigo;
-    private javax.swing.JTextField tfControl;
     private javax.swing.JButton tfCrear;
     private javax.swing.JTextField tfDescripcion;
     private javax.swing.JTextField tfDestino;
     private javax.swing.JTextField tfLinea;
     private javax.swing.JTextField tfMedida;
-    private javax.swing.JTextField tfStockMax;
-    private javax.swing.JTextField tfStockMin;
     private javax.swing.JTextField tfTipo;
     // End of variables declaration//GEN-END:variables
 }

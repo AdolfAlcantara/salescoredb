@@ -33,7 +33,7 @@ public class Productos {
      * @param stockMin
      * @param stockMax
      */
-    public void createProductoL(String cod, String line, String tipo, String activo, double medida, int centro, String destino, String descripcion,int control, int stockMin, int stockMax)
+    public void createProductoL(String cod, String line, String tipo, String activo, double medida, int centro, String destino, String descripcion)
     {
        SQLConnections cons = new SQLConnections();
        try{
@@ -51,7 +51,7 @@ public class Productos {
            cs.close();
            con.close();
            System.out.println("Se creo Producto Local exitosamente");
-           createProductoA(cod,control,stockMin,stockMax);           
+           //createProductoA(cod,control,stockMin,stockMax);           
        } catch (SQLException ex) {
             Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -71,7 +71,7 @@ public class Productos {
      * @param stockMin
      * @param stockMax
      */
-    public void updateProductoL(String cod, String line, String tipo, String activo, double medida, int centro, String destino, String descripcion,int control, int stockMin, int stockMax)
+    public void updateProductoL(String cod, String line, String tipo, String activo, double medida, int centro, String destino, String descripcion)
     {
         SQLConnections con = new SQLConnections();
         try{
@@ -89,7 +89,7 @@ public class Productos {
            cs.close();
            cn.close();
            System.out.println("Se actualizo Producto Local exitosamente");
-           updateProductoA(cod,control,stockMin,stockMax);
+           //updateProductoA(cod,control,stockMin,stockMax);
         } catch (SQLException ex) {
             Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -103,7 +103,7 @@ public class Productos {
     {
         SQLConnections con = new SQLConnections();
         try{
-            deleteProductoA(cod);
+            //deleteProductoA(cod);
             Connection cn = con.SQLConnection();
             CallableStatement cs = cn.prepareCall("{call SP_DELETE_PRODUCTOS(?)}");
             cs.setString(1, cod);

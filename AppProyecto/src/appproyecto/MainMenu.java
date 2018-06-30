@@ -6,6 +6,7 @@
 package appproyecto;
 
 import Login.Login;
+import appproyecto.Almacen.mainAlmacen;
 import appproyecto.Compras.mainCompras;
 import appproyecto.Ventas.mainVentas;
 
@@ -49,6 +50,11 @@ public class MainMenu extends javax.swing.JPanel {
         bAlmacen.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         bAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/almacen_icon.png"))); // NOI18N
         bAlmacen.setText("Almacen");
+        bAlmacen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAlmacenActionPerformed(evt);
+            }
+        });
 
         bVentas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         bVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/ventas_icon.png"))); // NOI18N
@@ -90,6 +96,7 @@ public class MainMenu extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(bVentas))))
                     .addGroup(layout.createSequentialGroup()
+
                         .addGap(257, 257, 257)
                         .addComponent(lWelcome)))
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -97,24 +104,26 @@ public class MainMenu extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+
                 .addGap(48, 48, 48)
                 .addComponent(lWelcome)
                 .addGap(70, 70, 70)
+
+                .addContainerGap(132, Short.MAX_VALUE)
+
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(bLogout)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         lWelcome.setText("Bienvenido "+Login.USER_LOGGED.user);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bComprasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bComprasMousePressed
-        MainV mv = new MainV();
-        mv.setTitle("Compras");
         MainV.SETPANEL(new mainCompras());
     }//GEN-LAST:event_bComprasMousePressed
 
@@ -126,6 +135,9 @@ public class MainMenu extends javax.swing.JPanel {
         MainV.SETPANEL(new LoginV());
     }//GEN-LAST:event_bLogoutActionPerformed
 
+    private void bAlmacenActionPerformed(java.awt.event.ActionEvent evt) {
+        MainV.SETPANEL(new mainAlmacen());
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

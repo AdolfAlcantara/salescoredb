@@ -5,6 +5,9 @@
  */
 package appproyecto.Almacen;
 
+import appproyecto.MainMenu;
+import appproyecto.MainV;
+
 /**
  *
  * @author alejandro
@@ -27,19 +30,159 @@ public class mainAlmacen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bProductos = new javax.swing.JButton();
+        bRegresar = new javax.swing.JButton();
+        bEquivalencias = new javax.swing.JButton();
+        bIngresoC = new javax.swing.JButton();
+        bIngresoO = new javax.swing.JButton();
+        bNotaS = new javax.swing.JButton();
+        bNotaS1 = new javax.swing.JButton();
+        bNotaS2 = new javax.swing.JButton();
+
+        bProductos.setText("Productos");
+        bProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bProductosActionPerformed(evt);
+            }
+        });
+
+        bRegresar.setText("Regresar");
+        bRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegresarActionPerformed(evt);
+            }
+        });
+
+        bEquivalencias.setText("Equivalencias");
+        bEquivalencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEquivalenciasActionPerformed(evt);
+            }
+        });
+
+        bIngresoC.setText("Ingreso por compra");
+        bIngresoC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bIngresoCActionPerformed(evt);
+            }
+        });
+
+        bIngresoO.setText("Ingreso por otro");
+        bIngresoO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bIngresoOActionPerformed(evt);
+            }
+        });
+
+        bNotaS.setText("Nota de salida");
+        bNotaS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bNotaSActionPerformed(evt);
+            }
+        });
+
+        bNotaS1.setText("Guia de Remision");
+        bNotaS1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bNotaS1ActionPerformed(evt);
+            }
+        });
+
+        bNotaS2.setText("Transferencia de almacenes");
+        bNotaS2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bNotaS2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bNotaS2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(195, 195, 195))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bRegresar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bNotaS, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bIngresoC, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bEquivalencias, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bIngresoO, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bNotaS1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bEquivalencias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bIngresoC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bIngresoO, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bNotaS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bNotaS1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(bNotaS2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(bRegresar)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegresarActionPerformed
+        MainV.SETPANEL(new MainMenu());
+    }//GEN-LAST:event_bRegresarActionPerformed
+
+    private void bProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProductosActionPerformed
+        MainV.SETPANEL(new ProductoAV());
+    }//GEN-LAST:event_bProductosActionPerformed
+
+    private void bEquivalenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEquivalenciasActionPerformed
+        MainV.SETPANEL(new EquivalenciasV());
+    }//GEN-LAST:event_bEquivalenciasActionPerformed
+
+    private void bIngresoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bIngresoCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bIngresoCActionPerformed
+
+    private void bIngresoOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bIngresoOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bIngresoOActionPerformed
+
+    private void bNotaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNotaSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bNotaSActionPerformed
+
+    private void bNotaS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNotaS1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bNotaS1ActionPerformed
+
+    private void bNotaS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNotaS2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bNotaS2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bEquivalencias;
+    private javax.swing.JButton bIngresoC;
+    private javax.swing.JButton bIngresoO;
+    private javax.swing.JButton bNotaS;
+    private javax.swing.JButton bNotaS1;
+    private javax.swing.JButton bNotaS2;
+    private javax.swing.JButton bProductos;
+    private javax.swing.JButton bRegresar;
     // End of variables declaration//GEN-END:variables
 }
