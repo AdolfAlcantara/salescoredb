@@ -77,49 +77,49 @@ public class Clientes {
     }
     
     public String[][] tableValues(){
-        String [][] valoresN;
-        System.out.println("lbefore try?");
-        try{
-            System.out.println("lbefore statement?");
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM VER_CC_CLIENTE");
-            System.out.println("results?");
-            ResultSet rs = ps.executeQuery();
-            System.out.println("lbefore metadata?");
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int countColumns = rsmd.getColumnCount();
-            System.out.println("columnas: "+countColumns);
-            int y=0;
-            valoresN = new String [1050][countColumns];
-            System.out.println("lbefore?");
-            while(rs.next()){
-//                System.out.println("loop while?");
-//                actualRow+=1;
-//                String [][] valores = new String[actualRow][countColumns];
-//                
-//                for(int x=0;x<valoresN.length;x++){
-//                    for(int y=0;y<valoresN[actualRow].length;y++){
+//        String [][] valoresN;
+//        System.out.println("lbefore try?");
+//        try{
+//            System.out.println("lbefore statement?");
+//            PreparedStatement ps = con.prepareStatement("SELECT * FROM VER_CC_CLIENTE");
+//            System.out.println("results?");
+//            ResultSet rs = ps.executeQuery();
+//            System.out.println("lbefore metadata?");
+//            ResultSetMetaData rsmd = rs.getMetaData();
+//            int countColumns = rsmd.getColumnCount();
+//            System.out.println("columnas: "+countColumns);
+//            int y=0;
+//            valoresN = new String [1050][countColumns];
+//            System.out.println("lbefore?");
+//            while(rs.next()){
+////                System.out.println("loop while?");
+////                actualRow+=1;
+////                String [][] valores = new String[actualRow][countColumns];
+////                
+////                for(int x=0;x<valoresN.length;x++){
+////                    for(int y=0;y<valoresN[actualRow].length;y++){
 ////                        for(int column=1;column<=countColumns;column++){\
-                            
-                            valoresN[y][0] = rs.getString(1);
-                            valoresN[y][1] = rs.getString(2);
-                            valoresN[y][2] = rs.getString(3);
-                            valoresN[y][3] = String.valueOf(rs.getDouble(4));
+//                            
+//                            valoresN[y][0] = rs.getString(1);
+//                            valoresN[y][1] = rs.getString(2);
+//                            valoresN[y][2] = rs.getString(3);
+//                            valoresN[y][3] = String.valueOf(rs.getDouble(4));
 ////                        }
-//                    }
-//                }
-//                valoresN = new String[actualRow][countColumns];
-//                 for(int x=0;x<valoresN.length;x++){
-//                    for(int y=0;y<valores[actualRow-1].length;y++){
-//                        
-//                    }
-//                 }
-                y+=1;
-            };
-            return valoresN;
-        }catch(Exception e){
-            System.out.println("catch?");
-            e.printStackTrace();
-        }
+////                    }
+////                }
+////                valoresN = new String[actualRow][countColumns];
+////                 for(int x=0;x<valoresN.length;x++){
+////                    for(int y=0;y<valores[actualRow-1].length;y++){
+////                        
+////                    }
+////                 }
+//                y+=1;
+//            };
+//            return valoresN;
+//        }catch(Exception e){
+//            System.out.println("catch?");
+//            e.printStackTrace();
+//        }
         return null;
     }
     

@@ -44,6 +44,7 @@ public class LoginV extends javax.swing.JPanel {
         setForeground(new java.awt.Color(204, 204, 255));
 
         tfUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfUser.setText("raul");
         tfUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tfUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +53,7 @@ public class LoginV extends javax.swing.JPanel {
         });
 
         tfPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfPassword.setText("admin");
         tfPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         bLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -139,7 +141,7 @@ public class LoginV extends javax.swing.JPanel {
         if (log.registrar(getUser(),getPassword()))
             System.out.println("exitooo");
         else
-            System.out.println("me cago en esta mierda");
+            System.out.println("error");
         setBlank();
     }//GEN-LAST:event_bCrearMousePressed
 

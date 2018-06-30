@@ -17,9 +17,13 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * Esta clase es la base para el login visual
@@ -198,8 +202,8 @@ public class Login {
     {
         try {
                 Class.forName("com.ibm.db2.jcc.DB2Driver");
-                String url = "jdbc:db2://localhost:50000/Proyecto";
-                Connection connection = DriverManager.getConnection(url,"db2admin","davila");
+                String url = "jdbc:db2://192.168.56.101:50000/proyecto";
+                Connection connection = DriverManager.getConnection(url,"db2admin","hitler45");
                 if(connection.equals(null)) 
                 {
                     System.out.println("connection was failed");
@@ -216,5 +220,31 @@ public class Login {
                 System.out.println(exception.getMessage());
             }
         return null;
+    }
+    
+    public DefaultTableModel buildTableModel(ResultSet rs)
+            throws SQLException {
+
+        ResultSetMetaData metaData = rs.getMetaData();
+
+        // names of columns
+        Vector<String> columnNames = new Vector<String>();
+        int columnCount = metaData.getColumnCount();
+        for (int column = 1; column <= columnCount; column++) {
+            columnNames.add(metaData.getColumnName(column));
+        }
+
+        // data of the table
+        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+        while (rs.next()) {
+            Vector<Object> vector = new Vector<Object>();
+            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+                vector.add(rs.getObject(columnIndex));
+            }
+            data.add(vector);
+        }
+
+        return new DefaultTableModel(data, columnNames);
+
     }
 }
