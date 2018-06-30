@@ -23,13 +23,16 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="bOrdenC" min="-2" pref="125" max="-2" attributes="0"/>
-                  <Component id="bDocumentos" min="-2" pref="125" max="-2" attributes="0"/>
-                  <Component id="bProductos" min="-2" pref="125" max="-2" attributes="0"/>
-                  <Component id="bProveedores" min="-2" pref="125" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="bRegCompras" alignment="0" max="32767" attributes="0"/>
+                  <Component id="bDocumentos" alignment="0" max="32767" attributes="0"/>
+                  <Component id="bOrdenC" alignment="0" max="32767" attributes="0"/>
+                  <Component id="bProductos" alignment="0" max="32767" attributes="0"/>
+                  <Component id="bProveedores" alignment="0" max="32767" attributes="0"/>
+                  <Component id="bCtaCte" alignment="0" pref="140" max="32767" attributes="0"/>
+                  <Component id="bEstadisticas" alignment="1" pref="140" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="186" max="32767" attributes="0"/>
+              <EmptySpace pref="166" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -44,7 +47,13 @@
               <Component id="bOrdenC" min="-2" pref="36" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="bDocumentos" min="-2" pref="36" max="-2" attributes="0"/>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="bRegCompras" min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="bCtaCte" min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="bEstadisticas" min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
               <Component id="bRegreso" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
@@ -91,6 +100,30 @@
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bOrdenCMousePressed"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bOrdenCActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bRegCompras">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registro de compras"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bRegComprasActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bCtaCte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cuenta corriente"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bCtaCteActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bEstadisticas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Estadisticas"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEstadisticasActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

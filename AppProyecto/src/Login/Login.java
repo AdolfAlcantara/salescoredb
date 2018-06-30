@@ -4,18 +4,6 @@
  * and open the template in the editor.
  */
 package Login;
-
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  * Esta clase es la base para el login visual
  * @author alejandro
@@ -27,8 +15,8 @@ public class Login {
      * de manera directa. Se inicializa en el constructor.
      */
     public static User USER_LOGGED = new User();
-    protected static File FILE_USUARIOS;
-    protected static ArrayList<User> USUARIOS=new ArrayList<>(); 
+    //protected static File FILE_USUARIOS;
+    //protected static ArrayList<User> USUARIOS=new ArrayList<>(); 
     
     public Login()
     {
@@ -40,20 +28,20 @@ public class Login {
         }*/
     }
     
-        
+/*        
     /**
      * Esta funcion es para comprobar si el usuario ya existe al momento
      * de crearlo
      * @param p es el nombre del usuario
      * @return true si encuentra un usuario con el mismo nombre
-     */
+     
     public boolean usuarioFound(String p){
         if(USUARIOS!= null){
             return USUARIOS.stream().anyMatch((u) -> (u.user.equalsIgnoreCase(p)));
         }
         return false;
     }
-    
+    */
     /**
      *
      * @param u nombre de usuario
@@ -92,7 +80,7 @@ public class Login {
      * Esta funcion carga los usuarios de un archivo de objetos
      * @return true si se cargo info del archivo
      */
-    public boolean cargarArchivo()
+ /*   public boolean cargarArchivo()
     {
         if (FILE_USUARIOS.exists())
         {
@@ -110,13 +98,13 @@ public class Login {
         }
         return false;
     }
-    
+/*    
     /**
      *
      * @param list recibe de parametro el ArrayList de usuarios
      * @param f es el archivo donde se guarda todo
      * @return true si se guardo
-     */
+     
     public boolean escribirArchivo(ArrayList list, File f)
     {
         if (!list.isEmpty())
@@ -141,7 +129,7 @@ public class Login {
         for (User u: USUARIOS)
            System.out.println(u.toString());
     }
-    
+ */   
     /**
      *
      * @param s user

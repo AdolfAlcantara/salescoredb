@@ -53,4 +53,42 @@ public class OrdenCompras {
             Logger.getLogger(OrdenCompras.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void updateOrdenC(String noOrden, String estado, String lugar, Timestamp fecha, String condicion, double total, String codProv, String noDetalle)
+    {
+        SQLConnections cons = new SQLConnections();
+        try{
+            Connection cn = cons.SQLConnection();
+            CallableStatement cs = cn.prepareCall("{call SP_UPDATE_ORDEN_COMPRAS(?, ?, ?, ?, ?, ?, ?, ?)}");
+            cs.setString(1, noOrden);
+            cs.setString(2, estado);
+            cs.setString(3, lugar);
+            cs.setTimestamp(4, fecha);
+            cs.setString(5, condicion);
+            cs.setDouble(6, total);
+            cs.setString(7, codProv);
+            cs.setString(8, noDetalle);
+            cs.execute();
+            cs.close();
+            System.out.println("Se actualizo Orden de Compra exitosamente");
+        } catch (SQLException ex) {
+            Logger.getLogger(OrdenCompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteOrdenC(String noOrden)
+    {
+        SQLConnections cons = new SQLConnections();
+        try{
+            Connection cn = cons.SQLConnection();
+            CallableStatement cs = cn.prepareCall("{call SP_DELETE_ORDEN_COMPRAS(?)}");
+            cs.setString(1, noOrden);
+            cs.execute();
+            cs.close();
+            cn.close();
+            System.out.println("Orden de compra borrada exitosamente");
+        } catch (SQLException ex) {
+            Logger.getLogger(OrdenCompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

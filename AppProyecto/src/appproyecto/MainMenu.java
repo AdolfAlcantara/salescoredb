@@ -113,6 +113,8 @@ public class MainMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bComprasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bComprasMousePressed
+        MainV mv = new MainV();
+        mv.setTitle("Compras");
         MainV.SETPANEL(new mainCompras());
     }//GEN-LAST:event_bComprasMousePressed
 
