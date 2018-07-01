@@ -91,4 +91,42 @@ public class OrdenCompras {
             Logger.getLogger(OrdenCompras.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /**
+     * Esta funcion es para generar Documento de Orden de Compra
+     * @param noDocumento
+     * @param noOrdenCompra
+     */
+    public void createOrdenCompraDocumento(String noDocumento, String noOrdenCompra)
+    {
+        SQLConnections con = new SQLConnections();
+        try{
+            Connection cn = con.SQLConnection();
+            CallableStatement cs = cn.prepareCall("{call SP_CREATE_ORDEN_COMPRA_DOCUMENTOS(?, ?)}");
+            cs.setString(1, noDocumento);
+            cs.setString(2, noOrdenCompra);
+            cs.execute();
+            cs.close();
+            cn.close();
+            System.out.println("Documento de Orden de Compra creado exitosamente");
+        } catch (SQLException ex) {
+            Logger.getLogger(OrdenCompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteOrdenCompraDocumento(String noOrdenCompra)
+    {
+        SQLConnections con = new SQLConnections();
+        try{
+            Connection cn = con.SQLConnection();
+            CallableStatement cs = cn.prepareCall("{call SP_DELETE_ORDEN_COMPRA_DOCUMENTOS(?)}");
+            cs.setString(1, noOrdenCompra);
+            cs.execute();
+            cs.close();
+            cn.close();
+            System.out.println("Documento de Orden de Compra borrado exitosamente");
+        } catch (SQLException ex) {
+            Logger.getLogger(OrdenCompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -5,7 +5,15 @@
  */
 package appproyecto.Compras;
 
+import Login.Login;
+import Login.SQLConnections;
 import appproyecto.MainV;
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -32,6 +40,7 @@ public class OrdenComprasV extends javax.swing.JPanel {
         bGenOrdenC = new javax.swing.JButton();
         bRegresar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        panelTableContainer = new javax.swing.JPanel();
 
         bGenOrdenC.setText("Generar Orden de Compra");
         bGenOrdenC.addActionListener(new java.awt.event.ActionListener() {
@@ -48,32 +57,46 @@ public class OrdenComprasV extends javax.swing.JPanel {
         });
 
         jButton1.setText("Ver O/C pendientes");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        panelTableContainer.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bGenOrdenC, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
-                .addContainerGap(179, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bRegresar)
-                .addGap(62, 62, 62))
+                .addGap(25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(bGenOrdenC, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(118, 118, 118)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(panelTableContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addComponent(bGenOrdenC, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bGenOrdenC, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(panelTableContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
                 .addComponent(bRegresar)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -85,10 +108,31 @@ public class OrdenComprasV extends javax.swing.JPanel {
         MainV.SETPANEL(new GenerarOrdenCV());
     }//GEN-LAST:event_bGenOrdenCActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Login logi = new Login();
+        SQLConnections log = new SQLConnections();
+        Connection con = log.SQLConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        JTable table;
+        try{
+        ps = con.prepareStatement("SELECT * FROM OC_PENDIENTES");
+        rs = ps.executeQuery();
+        table = new JTable(logi.buildTableModel(rs));
+        JScrollPane scrollPane = new JScrollPane(table);
+        panelTableContainer.add(scrollPane,BorderLayout.CENTER);
+        panelTableContainer.repaint();
+        panelTableContainer.revalidate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bGenOrdenC;
     private javax.swing.JButton bRegresar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JPanel panelTableContainer;
     // End of variables declaration//GEN-END:variables
 }

@@ -50,11 +50,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Orden de compra existente"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bOrdenExistenteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bOrdenExistente1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Orden de compra inexistente"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bOrdenExistente1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bRegresar">
       <Properties>
