@@ -5,20 +5,81 @@
  */
 package appproyecto.Ventas;
 
+import Ventas.OrdenPedido;
 import appproyecto.MainV;
+import java.util.ArrayList;
+import javax.swing.DefaultCellEditor;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author FuryCoder
  */
 public class OrdenPedidoV extends javax.swing.JPanel {
-
     /**
      * Creates new form OrdenPedido
      */
+    OrdenPedido op = new OrdenPedido();
+    
     public OrdenPedidoV() {
         initComponents();
+        JComboBox<String> productos = new JComboBox<>();
+        ArrayList<String> productData = op.productOptions();
+        for(int i=0;i<productData.size();i++){
+            productos.addItem(productData.get(i));
+        }
+        jTable1.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(productos));
+        jTable1.getModel().addTableModelListener(new TableModelListener(){
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                int row = e.getFirstRow(); int column = e.getColumn();
+                System.out.println(column);
+                if(column== 1){
+                    TableModel model = jTable1.getModel();
+                    String valor = jTable1.getModel().getValueAt(row,column).toString();
+                    String info = op.getProductProperties(valor);
+                    model.setValueAt(info,row,0);
+//                    jTable1.setModel(model);
+                }
+                if(column==2){
+                    TableModel model = jTable1.getModel();
+                    if(model.getValueAt(row,3)==null){
+                        model.setValueAt(0,row,4);
+                    }else{
+                        int cant = Integer.parseInt(model.getValueAt(row,2).toString());
+                        double price = Double.parseDouble(model.getValueAt(row,3).toString());
+                        model.setValueAt(cant*price,row,4);
+                    }
+                }
+                if(column==3){
+                    TableModel model = jTable1.getModel();
+                    if(model.getValueAt(row,2)==null){
+                        model.setValueAt(0,row,4);
+                    }else{
+                        int cant = Integer.parseInt(model.getValueAt(row,2).toString());
+                        double price = Double.parseDouble(model.getValueAt(row,3).toString());
+                        model.setValueAt(cant*price,row,4);
+                    }
+                }
+                if(column==4){
+                    TableModel model = jTable1.getModel();
+                    double total = 0;
+                    for(int i=0;i<model.getRowCount();i++){
+                        if(model.getValueAt(i,4)!=null){
+                            double subtotal = Double.parseDouble(model.getValueAt(i,4).toString());
+                            total+=subtotal;
+                        }
+                    }
+                    totalF.setText(String.valueOf(total));
+                }
+            }
+        });
     }
 
     /**
@@ -45,6 +106,8 @@ public class OrdenPedidoV extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         cancelB = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        totalF = new javax.swing.JLabel();
 
         clientCodeF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,14 +179,28 @@ public class OrdenPedidoV extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Short.class, java.lang.Short.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jTable1.setCellSelectionEnabled(true);
+        jTable1.setColumnSelectionAllowed(false);
+        jTable1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jTable1InputMethodTextChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         cancelB.setText("Cancelar");
@@ -133,45 +210,56 @@ public class OrdenPedidoV extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setText("TOTAL:");
+
+        totalF.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        totalF.setText("0.00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cancelB)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(clientCodeF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1))
-                            .addGap(53, 53, 53)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lugarEntregaF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(despachoOption)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jCheckBox1))
-                                .addComponent(mostradorOption))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(guiaB, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                                .addComponent(doB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(clientCodeF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lugarEntregaF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(despachoOption)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox1))
+                            .addComponent(mostradorOption))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(guiaB, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(doB, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(84, 84, 84)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(totalF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancelB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
@@ -188,8 +276,12 @@ public class OrdenPedidoV extends javax.swing.JPanel {
                         .addComponent(mostradorOption))
                     .addComponent(doB, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(totalF))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(cancelB)
                 .addContainerGap())
         );
@@ -220,17 +312,48 @@ public class OrdenPedidoV extends javax.swing.JPanel {
     }//GEN-LAST:event_cancelBActionPerformed
 
     private void guiaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiaBActionPerformed
-        if(buttonGroup1.getSelection()==null || clientCodeF.getText().equals("") || lugarEntregaF.getText().equals("")|| jComboBox1.getSelectedItem()==null){
+        if(validateFields()){
             JOptionPane.showMessageDialog(this, "El formulario no esta completo" , "ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            getTableData();
+            int nOrdenPedido = op.getNoOrdenPedido();
+            int nDetalle = op.getNoDetalle();
         }
     }//GEN-LAST:event_guiaBActionPerformed
 
     private void doBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doBActionPerformed
-        if(buttonGroup1.getSelection()==null || clientCodeF.getText().equals("") || lugarEntregaF.getText().equals("")|| jComboBox1.getSelectedItem()==null){
+        if(validateFields()){
             JOptionPane.showMessageDialog(this, "El formulario no esta completo" , "ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            getTableData();
         }
     }//GEN-LAST:event_doBActionPerformed
 
+    private void jTable1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable1InputMethodTextChanged
+        
+    }//GEN-LAST:event_jTable1InputMethodTextChanged
+
+    private boolean validateFields(){
+        return (buttonGroup1.getSelection()==null || clientCodeF.getText().equals("") || lugarEntregaF.getText().equals("")|| jComboBox1.getSelectedItem()==null);
+    }
+    
+    private ArrayList<String> getTableData(){
+        TableModel model = new DefaultTableModel();
+//        jTable1.setModel(dataModel);
+        
+        ArrayList<String> dataTable = new ArrayList<>();
+        for(int x=0; x <model.getRowCount();x++){
+            for(int y=0; y <model.getColumnCount();y++){
+                if(model.getValueAt(x, 1)==null){
+                    return null;
+                }else{
+                    dataTable.add(model.getValueAt(x, y).toString());
+                }
+            }
+        }
+        System.out.println(dataTable);
+        return dataTable;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -244,9 +367,11 @@ public class OrdenPedidoV extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField lugarEntregaF;
     private javax.swing.JRadioButton mostradorOption;
+    private javax.swing.JLabel totalF;
     // End of variables declaration//GEN-END:variables
 }
