@@ -5,6 +5,7 @@
  */
 package appproyecto.Ventas;
 import Login.Login;
+import Login.SQLConnections;
 import Ventas.Clientes;
 import appproyecto.MainMenu;
 import appproyecto.MainV;
@@ -124,7 +125,8 @@ public class mainVentas extends javax.swing.JPanel {
 //        JFrame frame = new JFrame();
 //        String[][] values = cli.tableValues();
 //        String[] names = cli.tableColumnNames();
-        Login log = new Login();
+        Login logi = new Login();
+        SQLConnections log = new SQLConnections();
         Connection con = log.SQLConnection();
         PreparedStatement ps;
         ResultSet rs;
@@ -132,7 +134,7 @@ public class mainVentas extends javax.swing.JPanel {
         try{
         ps = con.prepareStatement("SELECT * FROM VER_CC_CLIENTE");
         rs = ps.executeQuery();
-        table = new JTable(log.buildTableModel(rs));
+        table = new JTable(logi.buildTableModel(rs));
         JScrollPane scrollPane = new JScrollPane(table);
         panelTableCotainer.add(scrollPane,BorderLayout.CENTER);
         panelTableCotainer.repaint();

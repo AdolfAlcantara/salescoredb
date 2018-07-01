@@ -16,7 +16,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -27,32 +27,38 @@
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="tfCrear" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="tfActualizar" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="tfCrear" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="bRegresar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="tfDescripcion" alignment="1" min="-2" pref="163" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="tfDestino" pref="163" max="32767" attributes="0"/>
-                              <Component id="tfCentro" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tfMedida" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tfActivo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tfTipo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tfLinea" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tfCodigo" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="141" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="tfDescripcion" alignment="1" min="-2" pref="163" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="tfDestino" pref="163" max="32767" attributes="0"/>
+                                      <Component id="tfCentro" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfMedida" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfActivo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfTipo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfLinea" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfCodigo" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="bBorrar" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="bRegresar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                      <Component id="bActualizar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -108,12 +114,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="tfCrear" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bBorrar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -217,10 +224,21 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCrearActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="tfActualizar">
+    <Component class="javax.swing.JButton" name="bActualizar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bActualizarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bBorrar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Borrar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBorrarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
