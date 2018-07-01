@@ -34,8 +34,18 @@ public class DocumentosV extends javax.swing.JPanel {
         bRegresar = new javax.swing.JButton();
 
         bOrdenExistente.setText("Orden de compra existente");
+        bOrdenExistente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bOrdenExistenteActionPerformed(evt);
+            }
+        });
 
         bOrdenExistente1.setText("Orden de compra inexistente");
+        bOrdenExistente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bOrdenExistente1ActionPerformed(evt);
+            }
+        });
 
         bRegresar.setText("Regresar");
         bRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +85,14 @@ public class DocumentosV extends javax.swing.JPanel {
     private void bRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegresarActionPerformed
         MainV.SETPANEL(new mainCompras());
     }//GEN-LAST:event_bRegresarActionPerformed
+
+    private void bOrdenExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenExistenteActionPerformed
+        MainV.SETPANEL(new DocExistenteV());
+    }//GEN-LAST:event_bOrdenExistenteActionPerformed
+
+    private void bOrdenExistente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenExistente1ActionPerformed
+        MainV.SETPANEL(new DocInexistenteV());
+    }//GEN-LAST:event_bOrdenExistente1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
